@@ -8,12 +8,6 @@ jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
 
-    permissions:
-      # required for all workflows
-      security-events: write
-      actions: read
-      contents: read
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -21,8 +15,8 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
-          languages: 'javascript, java'  # Specify the languages you want to analyze
-          config-file: '.github/codeql/codeql-config.yml'  # Reference the custom configuration file
+          languages: 'javascript, java'
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
+
