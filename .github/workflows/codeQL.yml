@@ -6,10 +6,9 @@ on:
 
 jobs:
   CodeQL-Build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # Optional, to specify a stable version of Ubuntu
 
     permissions:
-      # required for all workflows
       security-events: write
       actions: read
       contents: read
@@ -19,10 +18,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
-          languages: 'javascript, java' # Kendi dillerinize göre düzenleyin
-          config-file: '.github/codeql/codeql-config.yml' # Özel yapılandırma dosyası
+          languages: 'javascript, java'  # Adjust based on the languages in your project
+          config-file: '.github/codeql/codeql-config.yml'
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
